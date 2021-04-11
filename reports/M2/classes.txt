@@ -1,0 +1,84 @@
+Apple
+Apricot
+Avocado
+Banana
+Beetroot
+Blueberry
+Cabbage
+Cactus fruit
+Cantaloupe
+Carambula
+Carrot
+Cauliflower
+Cherry
+Chestnut
+Chilli Pepper
+Choy
+Clementine
+Cocos
+Corn
+Corn Husk
+Cucumber
+Dates
+Eggplant
+Fig
+Garlic
+Ginger
+Granadilla
+Grape
+Grapefruit
+Guava
+Hazelnut
+Huckleberry
+Jalapeno
+Kaki
+Kiwi
+Kohlrabi
+Kumquats
+Lemon
+Lettuce
+Limes
+Lychee
+Mandarine
+Mango
+Mangostan
+Maracuja
+Melon Piel de Sapo
+Mulberry
+Napa Cabbage
+Nectarine
+Nectarine Flat
+Nut Forest
+Nut Pecan
+Onion
+Orange
+Papaya
+Passion Fruit
+Pea
+Peach
+Pear
+Pepino
+Pepper
+Physalis
+Physalis with Husk
+Pineapple
+Pitahaya Red
+Plum
+Pomegranate
+Pomelo
+Potato
+Quince
+Radish
+Rambutan
+Raspberry
+Redcurrant
+Salak
+Soy Beans
+Spinach
+Strawberry
+Tamarillo
+Tangelo
+Tomato
+Turnip
+Walnut
+Watermelon
