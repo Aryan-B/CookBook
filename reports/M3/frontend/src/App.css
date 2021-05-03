@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&family=Work+Sans&display=swap');
+
+
+.App {
+  text-align: center;
+  margin: auto;
+  display: grid;
+  width: 80vw;
+  height: 100vh;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+
+.container{
+  margin: auto;
+  margin-top: 10vh;
+  width: 100%;
+  align-items: center;
+  /* background-color: black; */
+}
+
+
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.AddIngredientsText{
+  border-style: none;
+  border-bottom: 1px solid rgb(14, 163, 231);
+  height: 30px;
+  /* width: 30vw; */
+  min-width: 30vw;
+  background-color: transparent;
+  color: white;
+  font-family: 'Inconsolata' ;
+  font-size: 1.5em;
+  /* -webkit-transition: border .2s ease-out; */
+  transition: all .1s ease-out;
+  
+}
+.addform{
+  display: flex;
+  justify-content: space-between;
+  margin:auto;
+  width: 40vw;
+  /* background-color: grey; */
+  padding: 10px;
+}
+
+.AddButton{
+  border-radius: 5px;
+  border: 1px solid rgb(14, 163, 231);
+  color: rgb(14, 163, 231);
+  background-color: transparent;
+  width: 200px;
+  height: 40px;
+  font-size: 1em;
+}
+
+.AddIngredientsText:focus {
+  outline: none;
+  border-bottom: 3px solid rgb(14, 163, 231);
+}
+.inputbox{
+  padding-right: 10px;
+}
+
+h1{
+  
+  font-family: 'Work Sans', sans-serif;
+}
+
+.thumb{
+  position: relative;
+  display: inline-flex;
+  border-radius: 2px;
+  border: 1px solid #eaeaea;
+  margin-bottom: 8px;
+  margin-right: 8px;
+  width: 100px;
+  height: 100px;
+  padding: 4px;
+  box-sizing: border-box;
+}
+
+.thumbsContainer{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 16px;
+  padding: 20px;
+}
+
+
+.thumbInner{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  overflow:hidden;
+}
+
+.img{
+
+  margin: auto;
+  display: block;
+  width: auto;
+  max-height: 100%;
+}
+
+.thumbButton{
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  background: rgba(0,0,0,.8);
+  color: #fff;
+  border: 0;
+  border-radius: .325em;
+  cursor: pointer;
+}
