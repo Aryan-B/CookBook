@@ -53,7 +53,7 @@ def recognise():
 @app.route('/')
 def hw():
     #should change this part to our react one 
-	return '<form action="/recognise" method=\'POST\' enctype="multipart/form-data"><div>图片 <input type="file" name=\'file[0]\'></div><div>图片2 <input type="file" name=\'file[1]\'></div><input type="submit" value=注册></form>'
+	return '<form action="/recognise" method=\'POST\' enctype="multipart/form-data"><div>pic <input type="file" name=\'file[0]\'></div><div>pic2 <input type="file" name=\'file[1]\'></div><input type="submit" value=sign></form>'
 
 
 if __name__ == '__main__':
