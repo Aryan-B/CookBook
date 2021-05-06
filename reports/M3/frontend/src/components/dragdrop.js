@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import '../App.css';
 import _ from 'lodash';
 import {Link} from 'react-router-dom';
+import {AnimatePresence,motion} from 'framer-motion'
 
 
 const getColor = (props) => {
@@ -32,6 +33,7 @@ const Container = styled.div`
   color: white;
   outline: none;
   transition: border .24s ease-in-out;
+  margin-bottom:20px;
 `;
 
 
@@ -131,7 +133,14 @@ function Dragdrop() {
   }, [mfiles,files]);
 
   return (
-    <div className="container">
+    <motion.div 
+    initial={{opacity:0}} 
+    animate={{opacity:1}}
+    exit={{opacity:0}}
+    className="container">
+      <div className="w3-container ">
+        <h1 className='header'>CookBook</h1>
+      </div>
         <div className='addform'>
             <div className="inputbox"><input ref={addfield} onKeyPress={(ev) => { if (ev.key === 'Enter') {
                 addtolist(addfield.current.value); ev.preventDefault(); }}} type="text" className="AddIngredientsText"/></div>
@@ -145,8 +154,8 @@ function Dragdrop() {
             {thumbsImg}
             {thumbstxt}
         </div>
-        <div><Link to={{pathname: '/list', state: mfiles.concat(files)}}><button className="AddButton" onClick={()=>uploadfiles()}>Upload</button></Link></div>
-    </div>
+        <div className='upload thumbsContainer'><Link to={{pathname: '/list', state: mfiles.concat(files)}}><button className="AddButton" onClick={()=>uploadfiles()}>Upload</button></Link></div>
+    </motion.div>
   );
 }
 
