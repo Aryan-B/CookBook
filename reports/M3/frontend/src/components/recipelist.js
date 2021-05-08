@@ -52,6 +52,7 @@ function RecipeList(props) {
         setShowModal(handleShow);
     }
 
+    const url='http://localhost:8080';
     const ModalContent = () => {
         return(
             <Modal  show={show} onHide={handleClose}  dialogClassName="modal-90w" aria-labelledby="example-custom-modal-styling-title" centered id="modal">
@@ -170,7 +171,7 @@ return null;}
     }
     async function fetchMyAPI() {
         
-        await axios.post('http://localhost:8080/recognise', fd).then(response=>{
+        await axios.post(url+'/recognise', fd).then(response=>{
             if(response.status===200){
                 _.forEach(response.data,item=>{
                     if(item.hasOwnProperty('type')){
@@ -182,7 +183,7 @@ return null;}
                     console.log('aw snap, failed!');
             }
         }).then( async ()=>{setCI(mitems);});
-        await axios.post('http://localhost:8080/ingredients', mitems).then(async (response)=>{setSR(response.data); console.log(response.data)});
+        await axios.post(url+'/ingredients', mitems).then(async (response)=>{setSR(response.data); console.log(response.data)});
     }    
 
     var mappedItems = (combineditems||[]).filter(function(item){
@@ -199,7 +200,7 @@ return null;}
 
     async function recipePage(id){
         console.log(id);
-        await axios.post('http://localhost:8080/recipe', {'id':id}).then(async (response)=>{setModalInfo(response.data); console.log(response.data)});
+        await axios.post(url+'/recipe', {'id':id}).then(async (response)=>{setModalInfo(response.data); console.log(response.data)});
         toggletf();
     }
 
