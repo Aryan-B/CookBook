@@ -16,7 +16,7 @@ import Modal from 'react-bootstrap/Modal';
 import './list.css';
 import veg from './veg.png';
 import nveg from './nveg.png';
-
+import * as uuid  from 'uuid';
 
 function RecipeList(props) {
     const [loaded,setloaded]=useState(false);
@@ -35,10 +35,10 @@ function RecipeList(props) {
     const [showModal, setShowModal] = useState(false);
     const [modalInfo, setModalInfo] = useState({
     'analyzedInstructions': [{'name': '',
-                           'steps': [{'step': ''}]}],
+                           'steps': []}],
     'cuisines': [],
     'dishTypes': [],
-    'extendedIngredients': [{'originalString': ''}],
+    'extendedIngredients': [],
     'id': 0,
     'image': '',
     'readyInMinutes': 0,
@@ -46,7 +46,7 @@ function RecipeList(props) {
     'sourceUrl': '',
     'title': '',
     'vegetarian': false,
-    'winePairing': {'pairedWines': ['']}
+    'winePairing': {'pairedWines': []}
     });
     const toggletf = ()=>{
         setShowModal(handleShow);
@@ -76,13 +76,13 @@ function RecipeList(props) {
                 <div className="w3-bar-item">Serving Size : <Badge  >
                     <div  className="sitems w3-button ">{modalInfo.servings}</div></Badge>
                 </div>
-                {cuisines.length===0 ? null: <div className="w3-bar-item">Cuisine : {cuisines} </div>}
-                {winepairing.length===0 ? null: <div className="w3-bar-item">Wine Pairing : {winepairing}</div>}
+                {((_.has(modalInfo,'cuisines') === true) && (modalInfo.cuisines.length!==0)) ? <div className="w3-bar-item">Cuisine : <Cuisines/> </div>:null}
+                {((_.has(modalInfo.winePairing,'pairedWines') === true) && (modalInfo.winePairing.pairedWines.length!==0))?<div className="w3-bar-item">Wine Pairing : <Winepairing/></div>:null}
             </div>
             <div className="ingredient-area" id= "content-header"><h4>Ingredients : </h4> </div>
-            <ul className="ingredient-area">{ingredientlist}</ul>
+            <ul className="ingredient-area"><Ingredientlist/></ul>
             <div className="instruction-area" id= "content-header"><h4>Instructions : </h4> </div>
-            <ul className="instruction-area">{instructionlist}</ul>
+            <ul className="instruction-area"><Instructionlist/></ul>
 
             </Modal.Body>
         
@@ -91,42 +91,69 @@ function RecipeList(props) {
         );
     }
     // modalInfo.winePairing.pairedWines||
-    var winepairing=modalInfo.winePairing.pairedWines.map(function(val, index){    
+    var Winepairing= ()=>{
+        if((_.has(modalInfo.winePairing,'pairedWines') === true)){
+        return modalInfo.winePairing.pairedWines && modalInfo.winePairing.pairedWines.map(function(val, index){    
         return(
-            <Badge  key={val}>
-                <div key={val} className="sitems w3-button ">
+            <Badge  key={uuid.v4()}>
+                <div key={uuid.v4()} className="sitems w3-button ">
                     {val}
                 </div>
             </Badge>
       );}
-      );
+      );}
+    return null;
+    }
 
         
-  var cuisines=(modalInfo.cuisines).map(function(val, index){    
+  var Cuisines=()=>{
+    if(_.has(modalInfo,'cuisines')){
+
+      return modalInfo.cuisines.map(function(val, index){    
     return(
-        <Badge  key={val}>
-            <div key={val} className="sitems w3-button ">
+        <Badge  key={uuid.v4()}>
+            <div key={uuid.v4()} className="sitems w3-button ">
                  {val}
             </div>
         </Badge>
     );});
+}
+return null;}
         
         
-  var ingredientlist=(modalInfo.extendedIngredients).map(function(val, index){    
+  var Ingredientlist=()=>{
+    if(_.has(modalInfo,'extendedIngredients')){
+      return modalInfo.extendedIngredients.map(function(val, index){    
     return(
-        <li className="pad" key={val}>
-            <div key={val.originalString} className="sitems w3-button ">
+        <li className="pad" key={uuid.v4()}>
+            <div key={uuid.v4()} className="sitems w3-button">
                  {val.originalString}
             </div>
         </li>
-    );});
+    );});}
+    return (
+        <li className="pad" key={uuid.v4()}>
+            <div key={uuid.v4()} className="sitems w3-button">
+                 No ingredients were provided by Spoonacular API
+            </div>
+        </li>
+    );
+  }
     
-    var instructionlist= (modalInfo.analyzedInstructions[0].steps).map(function(val, index){    
+    var Instructionlist= ()=>{
+        if(_.has(modalInfo,'analyzedInstructions')&&( modalInfo.analyzedInstructions.length!==0)){
+        return modalInfo.analyzedInstructions[0].steps.map(function(val, index){    
         return(
-            <li key={val.step}>
+            <li key={uuid.v4()}>
                      {val.step}
             </li>
-        );});
+        );});}
+        return (
+            <li key={uuid.v4()}>
+                     No Instructions were provided by Spoonacular API
+            </li>
+        );
+    }
         
 
 
@@ -163,8 +190,8 @@ function RecipeList(props) {
                     return item;
                 }
             }).map(item => (
-                <div className="pad" key={item.name}>
-                    <div key={item.name} className="sitems w3-button ">
+                <div className="pad" key={uuid.v4()}>
+                    <div key={uuid.v4()} className="sitems w3-button ">
                     {item.name}
                     </div>
                 </div>
@@ -184,8 +211,8 @@ function RecipeList(props) {
     },[]);
 
     var listitems = srecipes.map(items=>(
-        <div className="pad">
-        <Card key={items.id} className="cards">
+        <div className="pad" key={uuid.v4()}>
+        <Card key={uuid.v4()} className="cards">
         <Card.Img variant="top" src={items.image} />
         <Card.Body>
           <Card.Title>{items.title}</Card.Title>
