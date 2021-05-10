@@ -840,7 +840,6 @@ def recipe():
     datas = json.loads(request.data.decode("ascii"))
     query_string=str(datas['id'])
     print(query_string)
-    return jsonify({'name':'Success','id':'12345'})
     try:
         api_response = api_instance.get_recipe_information(query_string)
         # pprint(api_response)
@@ -852,5 +851,5 @@ def recipe():
 
 
 if __name__ == '__main__':
-       app.run(host="localhost", port=8080)
+       app.run(host="0.0.0.0", port=8080)
        
