@@ -28,7 +28,18 @@ body{
 
 
 .header{
-  font-size: 70px;
+  width:300px;
+  height:100px;
+  background: url("./components/logo.png");
+  margin : auto;
+  /* margin-bottom: 100px; */
+  background-size: contain;
+  background-position: center center;
+}
+
+.info{
+  width:fit-content;
+  margin : auto;
   margin-bottom: 100px;
 }
 
@@ -178,10 +189,13 @@ h1{
   border-radius: 10px;
   transform-style: preserve-3d;
   z-index: 1000;
+  border: 1px solid rgb(14, 163, 231);
 
 }
 
 .inner-element {
+  border-radius: 10px;
+
   display: flex;
   flex-direction: column;
   justify-content: center;

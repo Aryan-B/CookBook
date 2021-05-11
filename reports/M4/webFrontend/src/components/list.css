@@ -9,6 +9,92 @@ body{
     display: flex;
 }
 
+.pad{
+    padding: 10px;
+}
+
+.close{
+    display:block;
+    float:right;
+    width:30px;
+    height:29px;
+    align-items: center;
+    padding: 0;
+}
+
+.container2{
+    margin: auto;
+    top:0;
+  width: 80vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.85);
+  box-shadow: 0 0 100px rgb(0, 0, 0);
+  
+}
+
+.hrecipes{
+    padding-top: 20px;
+    padding-bottom: 10px;
+    margin: 0;
+    font-size: 2em;
+}
+
+/* PreLoader Animations */
+.sloader{
+    align-items: center;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 2;
+    background-color: black;
+}
+
+.preloader{
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
+    padding: auto;
+}
+
+#rbarloading{
+    visibility:visible;
+}
+
+#rbarloaded{
+    visibility: hidden;
+    display: none;
+}
+
+.rloader{
+    height: 85vh;
+    left: 10vw;
+    align-items: center;
+    display: flex;
+    width: 60%;
+    position: absolute;
+    z-index: 2;
+    background-color: black;
+}
+#sidebarloading{
+    visibility:visible;
+    opacity: 1;
+    transition: visibility 1s, opacity 1s;
+}
+
+#sidebarloaded{
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 1s, opacity 1s;
+}
+
+/* ===================================== */
+
+
+
+/* Sidebar for analysed items : NON MODAL */
 .sidebar{
     width:25%;
     right:0;
@@ -42,9 +128,10 @@ body{
     padding: 20px;
   }
 
-.pad{
-    padding: 10px;
-}
+/* =============================================== */
+
+
+/* RecipeList CARD DECK */
 
 .recipelist{
     width: 60vw;
@@ -56,17 +143,6 @@ body{
     overflow-x: hidden;
     overflow-y: scroll;
 }
-
-.recipeLogo{
-    width: 150px;
-    height: 150px;
-    grid-area: menu;
-    border: 1px solid rgb(14, 163, 231);
-    border-radius: 5px;
-}
-
-.rheading{grid-area: footer; font-size: 1.5em;padding: 0%;}
-.rinfo{grid-area: main; font-size: 0.7em;}
 .rmore{font-size: 0.5em;
         border-radius: 5px;
         border: 1px solid rgb(14, 163, 231);
@@ -74,74 +150,88 @@ body{
         background-color: transparent;
         text-align: center;
         color: white;
-        /* width: max-content; */
         padding: 5px;
         margin: 0;
         height: 40px;
         font-size: 1em;
         grid-column-end: auto;
 }
-
-
-
-
-  .cards:hover{
-      background-color: rgba(90, 88, 88, 0.5);
-  } 
-
+.cards:hover{
+    background-color: rgba(90, 88, 88, 0.5);
+} 
 .rmore:hover{
     background-color: white;
     color: black;
     cursor: pointer;
 }
-
 .cards{
     width:18rem;
     height:100%;
     border: 1px solid rgb(14, 163, 231);
     background-color: transparent;
 }
-
 .cfooter{
     align-items: center;
 
 }
-
 .ccfooter{
     margin: auto;
     width: fit-content;
 }
 
-.close{
-    display:block;
-    float:right;
-    width:30px;
-    height:29px;
-    align-items: center;
-    padding: 0;
-}
+/* =============================================== */
+
+
+
 
 #modal{
     color: rgb(0, 0, 0);
     max-width: 90vw;
     margin:auto;
-
     align-self: center;
-    border: 1px solid rgb(14, 163, 231);
-
+    border:1px solid rgb(14, 163, 231);
+    height: 99vh;
+    overflow: hidden;;
 }
 
 .modalwh{
-    height:98vh;
+    height:99vh;
+    margin: 0;
 }
+
 #mbody{
     padding: 0;
+    height: 85%;
 }
+
+.heading{
+    background-color: rgb(14, 163, 231);
+    color:white;
+    height: 8%;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    padding: 1%;
+    font-size: 3vh;
+}
+
+.modalclose{
+    background-color: rgb(248, 247, 247);
+    color:black;
+    position: absolute;
+    top:20px; right: 20px;
+}
+
 .rsidebar{
     background-color: rgba(0, 0, 0,0.9);
     color: white;
     width: 30%;
-
+    position: absolute;
+    left: 0;
+    height: 93%;
+    bottom: 0;
+    padding: 20px;
+    /* z-index: 0; */
 
 }
 
@@ -162,68 +252,46 @@ body{
     position: absolute;
 }
 
+.content-area{
+    display: absolute;
+    width:65%;
+    height: 100%;
+    margin-right: 0;
+    bottom: 0;
+    margin-left: auto;
+    margin-top: 6%;
+}
+
 .ingredient-area{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    width:60%;
-    height: 30vh;
-    margin: auto;
-    margin-right:0;
-    left:auto;
+    padding: 20px;
+
+    height: 45%;
     list-style-type: none;
     overflow-y: scroll;
+    margin-bottom: 2%;
+}
+
+.listed{
     column-count: 2;
+
+}
+
+.listed2{
+    column-count: 1;
 }
 
 .instruction-area{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    /* padding-top: 50%; */
-    width:60%;
-    height: 50%;
-    margin: auto;
-    margin-right:0;
-    left:auto;
-    list-style-type:decimal;
+    padding: 20px;
+    width: 100%;
     overflow-y: scroll;
+    height: 45%;
 }
 
 #content-header{
-    padding-top: 30px;
+    width: 100%;
     height: fit-content;
-}
-.heading{
-    background-color: rgb(14, 163, 231);
-    color:white;
-}
-
-.modalclose{
-    background-color: rgb(248, 247, 247);
-    color:black;
 }
 
 .modified{
     overflow-wrap: normal;
-}
-
-.container2{
-    margin: auto;
-    top:0;
-  /* display: grid; */
-  /* padding: 0; */
-  width: 80vw;
-  height: 100vh;
-  /* align-items: center; */
-  background-color: rgba(0, 0, 0, 0.85);
-  box-shadow: 0 0 100px rgb(0, 0, 0);
-  
-}
-
-.hrecipes{
-    padding-top: 20px;
-    padding-bottom: 10px;
-    margin: 0;
-    font-size: 2em;
 }

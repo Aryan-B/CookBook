@@ -5,18 +5,14 @@ import "bootstrap/dist/css/bootstrap.css";
 import '../App.css';
 import _ from 'lodash';
 import {Link} from 'react-router-dom';
-import {AnimatePresence,motion} from 'framer-motion'
-import ParallaxCard from 'react-parallax-card'
+import {motion} from 'framer-motion'
 import Tilt from "react-parallax-tilt";
-import { Controller, Scene } from 'react-scrollmagic';
-import cardimg from '../bg3.jpg'
-import ReactPageScroller from 'react-page-scroller';
 import sdg from './scroll_downgif.gif'
-
+import logo from './logo.png'
 import ting from './ting.png'
 import jeremy from './jeremy.png'
 import aryan from './aryan.jpg'
-import rushil from './veg.png'
+import rushil from './rushil.jpg'
 
 const getColor = (props) => {
   if (props.isDragAccept) {
@@ -67,6 +63,7 @@ function Dragdrop(props) {
         files=files.filter(function(ele){ 
         if(ele.name !== file.name)
         {return ele;}
+        return null;
         });
     setFiles(files);
    }
@@ -75,6 +72,8 @@ function Dragdrop(props) {
         mfiles=mfiles.filter(function(ele){ 
             if(ele.name !== mfile.name)
                 {return ele;}
+        return null;
+
             });
         setmFiles(mfiles);
     }
@@ -195,9 +194,9 @@ function Dragdrop(props) {
         </div>
         
       </div>
-      <div className="scrolldown" id={toggle.isHidden ? 'fadein':'fadeout'} 
-      onClick={()=>{setwToggle((prevState)=>({isHidden: !prevState.isHidden}));setToggle((prevState)=>({isHidden: !prevState.isHidden}))}} style={{cursor:"pointer"}}> 
-        <img src={sdg} style={{height:'50px',width:'50px'}}/> Scroll down<img src={sdg} style={{height:'50px',width:'50px'}}/>
+      <div className="scrolldown"  
+      onClick={()=>{setwToggle((prevState)=>({isHidden: !prevState.isHidden}));setToggle((prevState)=>({isHidden: true}))}} style={{cursor:"pointer"}}> 
+        <img src={sdg} style={{height:'50px',width:'50px'}} alt="woops"/> Scroll down<img src={sdg} alt="woops" style={{height:'50px',width:'50px'}}/>
       </div>
       </section>
 
@@ -205,7 +204,7 @@ function Dragdrop(props) {
     <section className="App" id={widgettoggle.isHidden ? 'wfadein':'wfadeout'}>
       <div className="container">
       <div className="w3-container ">
-        <h1 className='header'>CookBook</h1>
+        <div className='header'/> <div className="info"> Upload the images of your ingredients (or type it manually) and let us handle the rest!</div>
       </div>
         <div className='addform'>
             <div className="inputbox"><input ref={addfield} onKeyPress={(ev) => { if (ev.key === 'Enter') {

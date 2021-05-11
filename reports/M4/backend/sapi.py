@@ -832,6 +832,7 @@ def ingredients():
         # pprint(api_response)
     except ApiException as e:
         print("Exception when calling DefaultApi->add_to_meal_plan: %s\n" % e)
+    # time.sleep(3)
     return Response(json.dumps(api_response),mimetype='application/json')
     
 @app.route('/recipe',methods=['POST'])
@@ -845,6 +846,7 @@ def recipe():
         # pprint(api_response)
     except ApiException as e:
         print("Exception when calling DefaultApi->add_to_meal_plan: %s\n" % e)
+    # time.sleep(2)
     return Response(json.dumps(api_response),mimetype='application/json')
 
 
