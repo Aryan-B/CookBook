@@ -20,6 +20,8 @@ body{
     height:29px;
     align-items: center;
     padding: 0;
+    margin-top: 10px;
+    margin-right: 10px;
 }
 
 .container2{
@@ -49,6 +51,18 @@ body{
     z-index: 2;
     background-color: black;
 }
+
+.rrloader{
+    align-items: center;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 2;
+    background-color: black;
+}
+
+
 
 .preloader{
     width: fit-content;
@@ -111,10 +125,10 @@ body{
 .sitems{
     text-align: center;
     border: 1px solid rgb(14, 163, 231);
-    border-radius: 5%;
+    border-radius: 5px;
     margin: none;
-    width: min-content;
-
+    /* width: min-content; */
+    /* max-width: 1000px; */
 }
 
 .itemContainer{
@@ -250,6 +264,8 @@ body{
     top: 10px;
     right: 10px;
     position: absolute;
+        height: 20px;
+        width: 20px;
 }
 
 .content-area{
@@ -264,16 +280,22 @@ body{
 
 .ingredient-area{
     padding: 20px;
-
+    width: 100%;
     height: 45%;
-    list-style-type: none;
+    /* list-style-type: none; */
     overflow-y: scroll;
     margin-bottom: 2%;
 }
 
-.listed{
+/* .listed{
     column-count: 2;
 
+} */
+
+ul{
+    list-style-type:none;
+    width : 100%;
+    column-count:2;
 }
 
 .listed2{
@@ -294,4 +316,154 @@ body{
 
 .modified{
     overflow-wrap: normal;
+}
+
+@media only screen and (max-width: 600px) {
+    .sidebar{
+        width: 100%;
+        /* display: inline; */
+        position: relative;
+    }
+    .itemContainer{
+        width: 100%;
+        max-width: none;
+        border-bottom: 1px solid rgb(63, 65, 66);
+
+    }
+    /* .pad{
+        display: none;
+    } */
+    .contentArea{
+    display: block;
+    position: relative;
+    /* height: 100vh; */
+
+}
+    .container2{
+        width: 100%;
+        height: min-content;
+
+    }
+    #position{
+        display:contents;
+        position: relative !important;
+    
+    }
+    .hrecipes{
+        text-align: center;
+        position: sticky;
+        top: 0;
+        padding: 10px;
+        background: black;
+        z-index: 5;
+    }
+
+    .close{
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        background-color: red;
+        color: white;
+        z-index: 6;
+    }
+
+    .sh{
+        padding-top: 10px;
+        padding: 20px !important;
+        margin-top: 0;
+        position: sticky;
+        top: 0px;        
+        /* margin-top: 10px; */
+        background-color: black;
+        box-shadow: 0 0 10px black;
+    }
+
+    .recipelist{
+        margin: 0;
+        width: 100%;
+        overflow: hidden;
+        height: fit-content;
+    }
+
+    .sloader{
+        display: none;
+    }
+
+    .rloader{
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 10;
+    }
+
+    #modal{
+        width: 100vw;
+        height: fit-content;
+        margin: 0;
+        padding: 0;
+        max-width: none;
+        border: none;
+    }
+    .modalwh{
+        width: 100vw;
+        height: fit-content;
+        margin: 0;
+        padding: 0;
+        position: relative;
+
+    }
+
+    .rsidebar{
+        width: 100%;
+        position: relative;
+        padding-top: 10vh;
+    }
+    .content-area{
+        width: 100%;
+        padding: 20px;
+        margin: 0;
+    }
+    .heading{
+        position: fixed;
+        top:0;
+        padding: 10px;
+        padding-right: 50px;
+        min-height: 10%;
+        height: auto;
+    }
+
+    ul{
+        padding: 0;
+        column-count:1;
+        max-width: 100%;
+    }
+
+    .parent{
+        top: 10px;
+    }
+
+    .rrloader{
+        position: fixed;
+        top:0%;
+        left: 0%;
+        height: 100vh;
+        width: 100vw;
+        z-index: 20;
+    }
+
+    .modalclose{
+        position: absolute;
+
+        z-index: 6 !important;
+        /* position: relative; */
+    }
+
+    .veg{
+        height: 20px;
+        width: 20px;
+    }
+
+
 }

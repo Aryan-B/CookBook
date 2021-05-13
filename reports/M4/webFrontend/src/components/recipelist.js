@@ -55,6 +55,7 @@ function RecipeList(props) {
 
 
     const url='http://18.221.82.143:8080';
+    // const url='http://localhost:8080';
 
     var Winepairing= ()=>{
         if((_.has(modalInfo.winePairing,'pairedWines') === true)){
@@ -101,8 +102,8 @@ function RecipeList(props) {
         if(_.has(modalInfo,'extendedIngredients')){
             return modalInfo.extendedIngredients.map(function(val, index){    
                 return(
-                    <li className="pad" key={uuid.v4()} style={{textDecoration:'none',cursor:'auto'}}>
-                        <div key={uuid.v4()} className="sitems w3-button" style={{textDecoration:'none',cursor:'auto'}}>
+                    <li className="pad" key={uuid.v4()} style={{textDecoration:'none',cursor:'auto',display:"inline-block"}}>
+                        <div key={uuid.v4()} className="sitems w3-button" style={{textDecoration:'none',cursor:'auto',whiteSpace:"normal",textAlign:"left"}}>
                             {val.originalString}
                         </div>
                     </li>
@@ -204,7 +205,7 @@ function RecipeList(props) {
     const ModalContent = () => {
         return(
             <Modal show={show}  onHide={handleClose} dialogClassName="modal-90w" aria-labelledby="example-custom-modal-styling-title" centered id="modal">
-                <div className="sloader" id={recipeloaded? 'sidebarloaded':'sidebarloading'} style={{position:'absolute'}}>
+                <div className="rrloader" id={recipeloaded? 'sidebarloaded':'sidebarloading'} >
                     <div className="preloader">
                         <img src={loader} style={{height:"80px",width:"80px"}} alt="woops"/>
                         <div style={{color:"white"}}>Fetching Recipe Info ...</div>
@@ -213,9 +214,7 @@ function RecipeList(props) {
                 <div className="modalwh">
                     <div className="heading">
                             {modalInfo.title} 
-                        <div className="pad">
-                            <Button onClick={handleClose} variant="outline-danger" className=' modalclose close '> × </Button>
-                        </div>
+                            <Button onClick={handleClose} variant="outline-danger" className='  close modalclose' id='mclose'> × </Button>
                     </div>
                 
                     <div id="mbody">
@@ -223,7 +222,7 @@ function RecipeList(props) {
                             <div className="pad parent">
                                 <Image fluid src={modalInfo.image} className="recipeImg"/>
                                 <div className="pad veg">
-                                    {modalInfo.vegetarian===true ? <Image className="close" src={veg}/>:<Image src={nveg} className="close"/>}
+                                    {modalInfo.vegetarian===true ? <Image className="veg" src={veg}/>:<Image src={nveg} className="veg"/>}
                                 </div>
                             </div>
                             <div className="pad">
@@ -243,7 +242,7 @@ function RecipeList(props) {
                                 <h4 id= "content-header">Ingredients : </h4> 
                             <div className="ingredient-area ">
 
-                                    <div className="listed"><ul style={{listStyleType:'none'}}><Ingredientlist/></ul></div>
+                                    <div className="listed"><ul ><Ingredientlist/></ul></div>
                             </div>
                                 <h4 id= "content-header">Instructions : </h4>
                             <div className="instruction-area">
@@ -270,21 +269,21 @@ function RecipeList(props) {
         animate={{opacity:1}}
         exit={{opacity:0}}
         className="container2">
-            <div className="hrecipes">🍉 Recipes 🍕</div>
-            <div className="w3-sidebar w3-bar-block w3-card sidebar" >
+            <div className="w3-sidebar w3-bar-block w3-card sidebar" id="position">
                 <div className="sloader" id={sidebarloaded? 'sidebarloaded':'sidebarloading'}>
                     <div className="preloader">
                         <img src={loader} style={{height:"80px",width:"80px"}} alt="woops"/>
                         <div>Detecting Items ...</div>
                     </div>
                 </div>
-            <div className="pad">
-                <Link to={{pathname: '/', state: false}}>
-                    <Button variant="outline-danger" className='close'> × </Button>
-                </Link></div>
+                    <Link to={{pathname: '/', state: false}}>
+                        <Button variant="outline-danger" className='close'> × </Button>
+                    </Link>
                 <h3 className="w3-bar-item sh">Analysed Items</h3>
                 <div className="itemContainer">{mappedItems}</div>
             </div>
+            <div className="contentArea">
+            <div className="hrecipes">🍉 Recipes 🍕</div>
             
             <CardDeck className= 'recipelist' >
                 <div className="rloader" id={listloaded? 'sidebarloaded':'sidebarloading'}>
@@ -296,7 +295,10 @@ function RecipeList(props) {
                 </div>
                 {listitems}
             </CardDeck>
-            < ModalContent/>
+            </div>
+            <ModalContent/>
+            
+            
       </motion.div>
     );
   }

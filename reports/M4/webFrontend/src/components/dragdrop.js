@@ -8,7 +8,6 @@ import {Link} from 'react-router-dom';
 import {motion} from 'framer-motion'
 import Tilt from "react-parallax-tilt";
 import sdg from './scroll_downgif.gif'
-import logo from './logo.png'
 import ting from './ting.png'
 import jeremy from './jeremy.png'
 import aryan from './aryan.jpg'
@@ -204,22 +203,26 @@ function Dragdrop(props) {
     <section className="App" id={widgettoggle.isHidden ? 'wfadein':'wfadeout'}>
       <div className="container">
       <div className="w3-container ">
-        <div className='header'/> <div className="info"> Upload the images of your ingredients (or type it manually) and let us handle the rest!</div>
+        <div className='header'><div className="headerlink" onClick={()=>{setwToggle((prevState)=>({isHidden: !prevState.isHidden}))}}></div></div> 
+          <div className="info"> Upload the images of your ingredients (or type it manually) and let us handle the rest!</div>
+
       </div>
         <div className='addform'>
             <div className="inputbox"><input ref={addfield} onKeyPress={(ev) => { if (ev.key === 'Enter') {
                 addtolist(addfield.current.value); ev.preventDefault(); }}} type="text" className="AddIngredientsText"/></div>
             <button className="AddButton" onClick={()=>addtolist(addfield.current.value)}>Add</button>
         </div>
-        <Container {...getRootProps({isDragActive, isDragAccept, isDragReject})}>
+        <Container id="dd" {...getRootProps({isDragActive, isDragAccept, isDragReject})}>
             <input {...getInputProps()} />
-            <p>Drag 'n' drop some files here, or click to select files</p>
+            <p className="largeinfo">Drag 'n' drop some files here, or click to select files</p>
+          <div className="smallinfo"> Upload through camera or select in gallery</div>
+
         </Container>
         <div className="thumbsContainer">
             {thumbsImg}
             {thumbstxt}
         </div>
-        <div className='upload thumbsContainer'><Link to={{pathname: '/list', state: mfiles.concat(files)}}><button className="AddButton" onClick={()=>uploadfiles()}>Upload</button></Link></div>
+        <div className='upload'><Link to={{pathname: '/list', state: mfiles.concat(files)}}><button className="AddButton" onClick={()=>uploadfiles()}>Upload</button></Link></div>
         </div>
         <div className="scrollup " > 
         <div className="sitems1" onClick={()=>{setwToggle((prevState)=>({isHidden: !prevState.isHidden}))}} style={{cursor:"pointer"}}> Back to top</div>
