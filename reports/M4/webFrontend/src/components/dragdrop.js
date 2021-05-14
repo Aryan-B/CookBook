@@ -12,6 +12,8 @@ import ting from './ting.png'
 import jeremy from './jeremy.png'
 import aryan from './aryan.jpg'
 import rushil from './rushil.jpg'
+import up from './up.gif'
+import Button from 'react-bootstrap/Button';
 
 const getColor = (props) => {
   if (props.isDragAccept) {
@@ -159,7 +161,7 @@ function Dragdrop(props) {
       className="parallax-effect-glare-scale"
       perspective={1000}
       scale={1.0}
-      gyroscope={true}
+      // gyroscope={true}
       glareEnable={true}
       glareMaxOpacity={0.2} 
       glareReverse={true}
@@ -167,7 +169,7 @@ function Dragdrop(props) {
       >
       <div className="inner-element" >
         <div className="pad">
-          <h1>Welcome To CookBook</h1>
+          <h1 style={{textAlign:"center"}}>Welcome To CookBook</h1>
           </div>
           <div  style={{fontSize:'0.5em',textAlign:'center',padding:'20px'}}>
           Your personalised cooking app. This app uses AI to recognise your "non-identifiable" kitchen ingredient and gives a recipe that can be made using those items
@@ -178,7 +180,10 @@ function Dragdrop(props) {
     </Tilt>
     </div>
       <div className="gmsidebar" id={toggle.isHidden ? 'gmsidebar-in':'gmsidebar-out'}>
-      <div style={{width:"100%",textAlign:"center",background:"rgb(14, 163, 231)",padding:"10px",top:"0",fontSize:"2em"}}>Meet the Team</div>
+      <div style={{width:"100%",textAlign:"center",background:"rgb(14, 163, 231)",padding:"10px",top:"0",fontSize:"150%"}}>
+        Meet the Team
+      </div>
+      <Button onClick={()=>{setToggle((prevState)=>({isHidden: !prevState.isHidden}))}} variant="outline-danger" id='gmclose' className="gmc" > × </Button>
       <div className="gm" style={{background:'url('+aryan+')',backgroundSize:"cover",backgroundPosition:"center",backgroundRepeat:"no-repeat"}}>
               <div className="gmname" >Aryan</div>
         </div>
@@ -195,7 +200,7 @@ function Dragdrop(props) {
       </div>
       <div className="scrolldown"  
       onClick={()=>{setwToggle((prevState)=>({isHidden: !prevState.isHidden}));setToggle((prevState)=>({isHidden: true}))}} style={{cursor:"pointer"}}> 
-        <img src={sdg} style={{height:'50px',width:'50px'}} alt="woops"/> Scroll down<img src={sdg} alt="woops" style={{height:'50px',width:'50px'}}/>
+        <img src={sdg} style={{height:'50px',width:'50px'}} alt="woops"/> Get Started!<img src={sdg} alt="woops" style={{height:'50px',width:'50px'}}/>
       </div>
       </section>
 
@@ -224,9 +229,7 @@ function Dragdrop(props) {
         </div>
         <div className='upload'><Link to={{pathname: '/list', state: mfiles.concat(files)}}><button className="AddButton" onClick={()=>uploadfiles()}>Upload</button></Link></div>
         </div>
-        <div className="scrollup " > 
-        <div className="sitems1" onClick={()=>{setwToggle((prevState)=>({isHidden: !prevState.isHidden}))}} style={{cursor:"pointer"}}> Back to top</div>
-      </div>
+        <div className="scrollup up" onClick={()=>{setwToggle((prevState)=>({isHidden: !prevState.isHidden}))}} style={{cursor:"pointer"}}> <img src={up} style={{height:"100px", width:"100px"}}/></div>
         </section>
         
     </motion.div>
