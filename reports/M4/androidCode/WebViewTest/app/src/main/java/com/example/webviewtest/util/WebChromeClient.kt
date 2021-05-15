@@ -7,6 +7,8 @@ import android.hardware.Camera
 import android.hardware.Camera.CameraInfo
 import android.net.Uri
 import android.os.Build
+import android.os.Environment
+import android.os.SystemClock
 import android.provider.MediaStore
 import android.text.TextUtils
 import android.view.View
@@ -26,12 +28,12 @@ import java.util.*
 class WebChromeClient : WebChromeClient() {
 
     companion object {
-        val FILE_PROVIDER_AUTH: String = BaseApplication.instance.packageName.toString() + ".core.fileprovider"
+        val FILE_PROVIDER_AUTH: String = BaseApplication.instance.packageName.toString() + ".xxx"
         val CAMERA_REQUEST_CODE = 0x2001
         val IMAGE_REQUEST_CODE = 0x2002
     }
 
-    private var requestCamaraPath: String? = null
+    var requestCamaraPath: String? = null
 
     var filePathCallback: ValueCallback<Array<Uri>>? = null
 
@@ -70,7 +72,7 @@ class WebChromeClient : WebChromeClient() {
                         }
                     } else if (index == 1) {
                         if (!PermissionUtil.checkPermissionAllGranted(BaseApplication.instance, PermissionUtil.PERMISSION_CAMERA)) {
-                            ActivityCompat.requestPermissions(MainActivity.mainActivity!!, arrayOf(Manifest.permission.CAMERA),0);
+                            ActivityCompat.requestPermissions(MainActivity.mainActivity!!, arrayOf(Manifest.permission.CAMERA), 0);
                             filePathCallback(null)
                             return
                         }
@@ -93,6 +95,14 @@ class WebChromeClient : WebChromeClient() {
         menuView?.show()
     }
 
+    fun getUIri2():Uri?{
+        val fileUri = File(Environment.getExternalStorageDirectory().path.toString() + "/" + SystemClock.currentThreadTimeMillis() + ".jpg")
+        var imageUri = Uri.fromFile(fileUri)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            imageUri = FileProvider.getUriForFile(BaseApplication.instance, BaseApplication.instance.getPackageName() + ".xxx", fileUri) //通过FileProvider创建一个content类型的Uri
+        }
+        return imageUri
+    }
 
     /**
      * Call back the selected data to the file control
@@ -137,7 +147,7 @@ class WebChromeClient : WebChromeClient() {
         return fileUri
     }
 
-    private fun getPhotoTmpPath(): String? {
+    fun getPhotoTmpPath(): String? {
         val photoName: String = DateUtil.convertDate(Date(), "yyyyMMddHHmss").toString() + "s.jpg"
         val dir: File = File(getDirPath())
         if (!dir.exists()) {

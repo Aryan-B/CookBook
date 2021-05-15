@@ -6,15 +6,16 @@ import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
-import android.view.View
-import android.view.WindowManager
+import android.text.TextUtils
 import android.webkit.*
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.FileProvider
 import com.example.webviewtest.util.WebChromeClient
 import com.example.webviewtest.util.WebChromeClient.Companion.CAMERA_REQUEST_CODE
 import com.example.webviewtest.util.WebChromeClient.Companion.IMAGE_REQUEST_CODE
+import java.io.File
 
 
 class MainActivity : AppCompatActivity() {
@@ -34,14 +35,14 @@ class MainActivity : AppCompatActivity() {
         val webView = findViewById<WebView>(R.id.wb_test)
 
 
-        if(supportActionBar !=null){
+        if (supportActionBar != null) {
             supportActionBar?.hide()
 
         }
         window.statusBarColor = resources.getColor(R.color.black)
 
         //Set the URL that needs to be loaded
-        webView.loadUrl("http://18.221.82.143:3000")
+        webView.loadUrl("http://18.116.164.154:3000")
 
         webChromeClient = WebChromeClient()
         webView.webChromeClient = webChromeClient
@@ -74,8 +75,9 @@ class MainActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (resultCode == RESULT_OK) {
             if (requestCode == CAMERA_REQUEST_CODE) {
-                //System photo result processing
-                webChromeClient?.filePathCallback(arrayOf(webChromeClient?.getPhotoUri()))
+
+                webChromeClient?.filePathCallback(arrayOf(FileProvider.getUriForFile(this, packageName + ".xxx", File(webChromeClient?.requestCamaraPath
+                        ?: ""))))
             } else if (requestCode == IMAGE_REQUEST_CODE) {
                 //Select album result processing
                 var results: Array<Uri?>? = null

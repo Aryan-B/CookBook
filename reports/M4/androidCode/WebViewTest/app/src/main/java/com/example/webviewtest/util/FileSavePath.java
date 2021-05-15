@@ -21,7 +21,7 @@ public class FileSavePath {
         } else {
             rootpath = BaseApplication.instance.getFilesDir().getAbsolutePath();
         }
-        return rootpath + File.separator + "epoint" + File.separator;
+        return rootpath + File.separator;
     }
 
     /**
