@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         window.statusBarColor = resources.getColor(R.color.black)
 
         //Set the URL that needs to be loaded
-        webView.loadUrl("http://18.116.164.154:3000")
+        webView.loadUrl("http://35.212.158.138:3000/")
 
         webChromeClient = WebChromeClient()
         webView.webChromeClient = webChromeClient
