@@ -1,4 +1,5 @@
 Apricot
+Apple
 Avocado
 Banana
 Beetroot
