@@ -18,9 +18,9 @@ import json
 
 configuration = spoonacular.Configuration()
 APIKEYS=['de1b34dcfe874d82885c269c47708c22',
-         'de9c1f4d64964019967d0689e3f10c51',
          '9dbf427dfd74432bafa4efcd28a4f518',
-         'd50cc4078de64534887a01014c0631a1']
+         'd50cc4078de64534887a01014c0631a1',
+         'de9c1f4d64964019967d0689e3f10c51']
 i=0
 configuration.api_key['apiKey'] = APIKEYS[i]
 
@@ -833,31 +833,41 @@ def ingredients():
         query.append(x['name'])
     query_string=','.join(query)
     print(query_string)
-    try:
-        api_response = api_instance.search_recipes_by_ingredients(query_string,number=30)
-        # pprint(api_response)
-    except ApiException as e:
-        if(str(e.status)=='402'):
-            i+=1
-            configuration.api_key['apiKey'] = APIKEYS[i] 
-            print('here =============================================== ',configuration.api_key['apiKey'])
-        # print("Exception when calling DefaultApi->add_to_meal_plan: %s\n" % e)
-        print(e.status)
-    # time.sleep(3)
+    api_response=""
+    status=''
+    while(status!='200'):
+        try:
+            api_response = api_instance.search_recipes_by_ingredients(query_string,number=30)
+            status='200'
+            # pprint(api_response)
+        except ApiException as e:
+            if(str(e.status)=='402'):
+                i+=1
+                configuration.api_key['apiKey'] = APIKEYS[i] 
+                print('here =============================================== ',configuration.api_key['apiKey'])
+            print(e.status)
     return Response(json.dumps(api_response),mimetype='application/json')
     
 @app.route('/recipe',methods=['POST'])
 def recipe():
+    global i
     pprint(request.data.decode("ascii"))
     datas = json.loads(request.data.decode("ascii"))
     query_string=str(datas['id'])
     print(query_string)
-    try:
-        api_response = api_instance.get_recipe_information(query_string)
-        # pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling DefaultApi->add_to_meal_plan: %s\n" % e)
-    # time.sleep(2)
+    api_response=""
+    status=''
+    while(status!='200'):    
+        try:
+            api_response = api_instance.get_recipe_information(query_string)
+            status='200'
+            # pprint(api_response)
+        except ApiException as e:
+            if(str(e.status)=='402'):
+                i+=1
+                configuration.api_key['apiKey'] = APIKEYS[i] 
+                print('here =============================================== ',configuration.api_key['apiKey'])
+            print(e.status)
     return Response(json.dumps(api_response),mimetype='application/json')
 
 
