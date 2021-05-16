@@ -8,6 +8,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.webkit.*
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
@@ -41,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         window.statusBarColor = resources.getColor(R.color.black)
 
         //Set the URL that needs to be loaded
-        webView.loadUrl("http://35.212.158.138:3000/")
+        webView.loadUrl("http://35.212.158.138:3000")
 
         webChromeClient = WebChromeClient()
         webView.webChromeClient = webChromeClient
@@ -74,7 +75,7 @@ class MainActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (resultCode == RESULT_OK) {
             if (requestCode == CAMERA_REQUEST_CODE) {
-
+                Toast.makeText(this, "Successful access!", Toast.LENGTH_SHORT).show()
                 webChromeClient?.filePathCallback(arrayOf(FileProvider.getUriForFile(this, packageName + ".xxx", File(webChromeClient?.requestCamaraPath
                         ?: ""))))
             } else if (requestCode == IMAGE_REQUEST_CODE) {
@@ -92,9 +93,15 @@ class MainActivity : AppCompatActivity() {
                 if (dataString != null) {
                     results = arrayOf(Uri.parse(dataString))
                 }
+                if (results == null) {
+                    Toast.makeText(this, "Get failed", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this, "Successful access!", Toast.LENGTH_SHORT).show()
+                }
                 webChromeClient?.filePathCallback(results)
             }
         } else {
+            Toast.makeText(this, "Get failed", Toast.LENGTH_SHORT).show()
             webChromeClient?.filePathCallback(null)
         }
         super.onActivityResult(requestCode, resultCode, data)
