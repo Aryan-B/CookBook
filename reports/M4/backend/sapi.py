@@ -17,7 +17,12 @@ import pickle
 import json
 
 configuration = spoonacular.Configuration()
-configuration.api_key['apiKey'] = 'de1b34dcfe874d82885c269c47708c22'
+APIKEYS=['de1b34dcfe874d82885c269c47708c22',
+         'de9c1f4d64964019967d0689e3f10c51',
+         '9dbf427dfd74432bafa4efcd28a4f518',
+         'd50cc4078de64534887a01014c0631a1']
+i=0
+configuration.api_key['apiKey'] = APIKEYS[i]
 
 api_instance = spoonacular.DefaultApi(spoonacular.ApiClient(configuration))
 # username = "dsky" # str | The username.
@@ -821,6 +826,7 @@ def recognise():
 
 @app.route('/ingredients',methods=['POST'])
 def ingredients():
+    global i
     datas = json.loads((request.data.decode("ascii")))
     query=[]
     for x in datas:
@@ -828,10 +834,15 @@ def ingredients():
     query_string=','.join(query)
     print(query_string)
     try:
-        api_response = api_instance.search_recipes_by_ingredients(query_string,number=24)
+        api_response = api_instance.search_recipes_by_ingredients(query_string,number=30)
         # pprint(api_response)
     except ApiException as e:
-        print("Exception when calling DefaultApi->add_to_meal_plan: %s\n" % e)
+        if(str(e.status)=='402'):
+            i+=1
+            configuration.api_key['apiKey'] = APIKEYS[i] 
+            print('here =============================================== ',configuration.api_key['apiKey'])
+        # print("Exception when calling DefaultApi->add_to_meal_plan: %s\n" % e)
+        print(e.status)
     # time.sleep(3)
     return Response(json.dumps(api_response),mimetype='application/json')
     
