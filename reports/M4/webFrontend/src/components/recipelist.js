@@ -54,7 +54,7 @@ function RecipeList(props) {
     });
 
 
-    const url='http://18.221.82.143:8080';
+    const url='http://www.cookbookubc.ml:8080';
     // const url='http://localhost:8080';
 
     var Winepairing= ()=>{
