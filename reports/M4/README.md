@@ -2,7 +2,7 @@ Milestone M4 report
 
 #The code associated with the final version of the Android app is stored in androidCode
 
-=#The code associated with the final version of the iOS app is stored in iosCode
+#The code associated with the final version of the iOS app is stored in iosCode
 
 #The web app can be found by clicking http://www.cookbookubc.ml/ or  http://35.212.227.131:3000/
 
