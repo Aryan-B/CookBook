@@ -295,7 +295,7 @@ body{
 ul{
     list-style-type:none;
     width : 100%;
-    column-count:2;
+    column-count:1;
 }
 
 .listed2{
