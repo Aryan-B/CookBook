@@ -1,4 +1,4 @@
-# Authors: 
+### Authors: 
 #### (Source: [Final Report](/reports/final/CPEN291%20Final%20Report.pdf))
 
 Aryan built the frontend web-app using ReactJS, remodeled it for android/ios display sizes, integrated spoonacular client with backend, automated cycling of API authentication keys, deployed the frontend on pm2 instance, created Cookbook service of the flask-app to be deployed on docker swarm containers and contributed for the flowcharts in the final report.
