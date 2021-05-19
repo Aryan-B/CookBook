@@ -38,7 +38,7 @@ The flask is deployed in multiple docker containers to parallelise the task. Thi
   * The downtime of our server was reduced by 99% in case of crashes or timeout error
 
 ![plot](./Images/bb.jpg)
-![plot](./Images/ds.jpg)
+![plot](./Images/ds.png)
 
 
 ### Machine Learning Model
@@ -46,7 +46,7 @@ We used MobileNetV2 as the architecture for the machine learning model. MobileNe
 
 We trained two separate implementations of a model on a dataset that consists of datasets from Kaggle (Fruits360, a dataset of images of fruits taken from all around it, and Fruit and Vegetable Image Recognition, a dataset include 36 species, each with around 100 images), and images from Bing Image Search(using bbid) and Google Image Search(using webdriver and selenium library).
 
-![plot](./Images/ifv.jpg)
+![plot](./Images/ifv.png)
  
 
 <br />
