@@ -1,0 +1,6 @@
+<resources>
+    <style name="Animations_BottomPush">
+        <item name="android:windowEnterAnimation">@anim/frm_actionsheet_bottom_in</item>
+        <item name="android:windowExitAnimation">@anim/frm_actionsheet_bottom_out</item>
+    </style>
+</resources>

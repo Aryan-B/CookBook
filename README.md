@@ -17,6 +17,8 @@ The web app was created using ReactJS and various npm libraries. Most tasks have
 
 The android app and ios app uses WebView and NSURLaddress respectively to load the URL address of the web app and change the display to be more mobile-friendly. The apps were created to enable the upload feature using camera 
 
+![plot](./Images/fb.jpg)
+
   - #### Web App : 
     * [On a domain name (useless redirects, curse of free domains)](http://www.cookbookubc.ml/) 
   
@@ -35,11 +37,17 @@ The flask is deployed in multiple docker containers to parallelise the task. Thi
   * It can handle up to 10 simultaneous requests at once (current configured docker swarm as per optimal server configuration). This reduces the time to respond to concurrent API calls by 90%.
   * The downtime of our server was reduced by 99% in case of crashes or timeout error
 
+![plot](./Images/bb.jpg)
+![plot](./Images/ds.jpg)
+
+
 ### Machine Learning Model
 We used MobileNetV2 as the architecture for the machine learning model. MobileNets are characterized by their fast inference since they are based on a streamlined architecture, using depth-wise separable convolutions to build light weight deep neural networks. MobileNetV2 features an inverted residual structure with a bottleneck between layers, which also removes non-linearities in the narrow layers. It also utilizes a novel framework known as SSDLite, which results in a prediction speed increase of up to 35% in comparison to previous versions. 
 
 We trained two separate implementations of a model on a dataset that consists of datasets from Kaggle (Fruits360, a dataset of images of fruits taken from all around it, and Fruit and Vegetable Image Recognition, a dataset include 36 species, each with around 100 images), and images from Bing Image Search(using bbid) and Google Image Search(using webdriver and selenium library).
 
+![plot](./Images/ifv.jpg)
+ 
 
 <br />
 <br />

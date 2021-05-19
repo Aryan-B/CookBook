@@ -1,0 +1,469 @@
+@import url("https://www.w3schools.com/w3css/4/w3.css");
+
+body{
+    color: white;
+}
+.App{
+    align-self: none;
+    margin: auto;
+    display: flex;
+}
+
+.pad{
+    padding: 10px;
+}
+
+.close{
+    display:block;
+    float:right;
+    width:30px;
+    height:29px;
+    align-items: center;
+    padding: 0;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.container2{
+    margin: auto;
+    top:0;
+  width: 80vw;
+  min-height: 100vh;
+  background-color: rgba(0, 0, 0, 0.85);
+  box-shadow: 0 0 100px rgb(0, 0, 0);
+  
+}
+
+.hrecipes{
+    padding-top: 20px;
+    padding-bottom: 10px;
+    margin: 0;
+    font-size: 2em;
+}
+
+/* PreLoader Animations */
+.sloader{
+    align-items: center;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 2;
+    background-color: black;
+}
+
+.rrloader{
+    align-items: center;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 2;
+    background-color: black;
+}
+
+
+
+.preloader{
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
+    padding: auto;
+}
+
+#rbarloading{
+    visibility:visible;
+}
+
+#rbarloaded{
+    visibility: hidden;
+    display: none;
+}
+
+.rloader{
+    height: 85vh;
+    left: 10vw;
+    align-items: center;
+    display: flex;
+    width: 60%;
+    position: absolute;
+    z-index: 2;
+    background-color: black;
+}
+#sidebarloading{
+    visibility:visible;
+    opacity: 1;
+    transition: visibility 1s, opacity 1s;
+}
+
+#sidebarloaded{
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 1s, opacity 1s;
+}
+
+/* ===================================== */
+
+
+
+/* Sidebar for analysed items : NON MODAL */
+.sidebar{
+    width:25%;
+    right:0;
+    top:0;
+    background-color: black;
+    border-left: 1px solid rgb(54, 54, 54);
+    
+}
+
+.sh{
+    margin-top:200px;
+}
+
+.sitems{
+    text-align: center;
+    border: 1px solid rgb(14, 163, 231);
+    border-radius: 5px;
+    margin: none;
+    /* width: min-content; */
+    /* max-width: 1000px; */
+}
+
+.itemContainer{
+    display: flex;
+    align-self: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 16px;
+    max-width:50vw;
+    margin: auto;
+    padding: 20px;
+  }
+
+/* =============================================== */
+
+
+/* RecipeList CARD DECK */
+
+.recipelist{
+    width: 60vw;
+    justify-content: space-around;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 85vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.rmore{font-size: 0.5em;
+        border-radius: 5px;
+        border: 1px solid rgb(14, 163, 231);
+        color: rgb(14, 163, 231);
+        background-color: transparent;
+        text-align: center;
+        color: white;
+        padding: 5px;
+        margin: 0;
+        height: 40px;
+        font-size: 1em;
+        grid-column-end: auto;
+}
+.cards:hover{
+    background-color: rgba(90, 88, 88, 0.5);
+} 
+.rmore:hover{
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+.cards{
+    width:18rem;
+    height:100%;
+    border: 1px solid rgb(14, 163, 231);
+    background-color: transparent;
+}
+.cfooter{
+    align-items: center;
+
+}
+.ccfooter{
+    margin: auto;
+    width: fit-content;
+}
+
+/* =============================================== */
+
+
+
+
+#modal{
+    color: rgb(0, 0, 0);
+    max-width: 90vw;
+    margin:auto;
+    align-self: center;
+    border:1px solid rgb(14, 163, 231);
+    height: 99vh;
+    overflow: hidden;;
+}
+
+.modalwh{
+    height:99vh;
+    margin: 0;
+}
+
+#mbody{
+    padding: 0;
+    height: 85%;
+}
+
+.heading{
+    background-color: rgb(14, 163, 231);
+    color:white;
+    height: 8%;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    padding: 1%;
+    font-size: 3vh;
+}
+
+.modalclose{
+    background-color: rgb(248, 247, 247);
+    color:black;
+    position: absolute;
+    top:20px; right: 20px;
+}
+
+.rsidebar{
+    background-color: rgba(0, 0, 0,0.9);
+    color: white;
+    width: 30%;
+    position: absolute;
+    left: 0;
+    height: 93%;
+    bottom: 0;
+    padding: 20px;
+    /* z-index: 0; */
+
+}
+
+.recipeImg{
+    width: 100%;
+    height: 350px;
+    border-radius: 5px;
+    position: relative;
+}
+
+.parent{
+    position:relative;
+}
+
+.veg{
+    top: 10px;
+    right: 10px;
+    position: absolute;
+        height: 20px;
+        width: 20px;
+}
+
+.content-area{
+    display: absolute;
+    width:65%;
+    height: 100%;
+    margin-right: 0;
+    bottom: 0;
+    margin-left: auto;
+    margin-top: 6%;
+}
+
+.ingredient-area{
+    padding: 20px;
+    width: 100%;
+    height: 45%;
+    /* list-style-type: none; */
+    overflow-y: scroll;
+    margin-bottom: 2%;
+}
+
+/* .listed{
+    column-count: 2;
+
+} */
+
+ul{
+    list-style-type:none;
+    width : 100%;
+    column-count:1;
+}
+
+.listed2{
+    column-count: 1;
+}
+
+.instruction-area{
+    padding: 20px;
+    width: 100%;
+    overflow-y: scroll;
+    height: 45%;
+}
+
+#content-header{
+    width: 100%;
+    height: fit-content;
+}
+
+.modified{
+    overflow-wrap: normal;
+}
+
+@media only screen and (max-width: 1000px) {
+    .sidebar{
+        width: 100%;
+        /* display: inline; */
+        position: relative;
+    }
+    .itemContainer{
+        width: 100%;
+        max-width: none;
+        border-bottom: 1px solid rgb(63, 65, 66);
+
+    }
+    /* .pad{
+        display: none;
+    } */
+    .contentArea{
+    display: block;
+    position: relative;
+    /* height: 100vh; */
+
+}
+    .container2{
+        width: 100%;
+        min-height: 100vh;
+
+    }
+    #position{
+        display:contents;
+        position: relative !important;
+    
+    }
+    .hrecipes{
+        text-align: center;
+        position: sticky;
+        top: 0;
+        padding: 10px;
+        background: black;
+        z-index: 5;
+    }
+
+    .close{
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        background-color: red;
+        color: white;
+        z-index: 6;
+    }
+
+    .sh{
+        padding-top: 10px;
+        padding: 20px !important;
+        margin-top: 0;
+        position: sticky;
+        top: 0px;        
+        /* margin-top: 10px; */
+        background-color: black;
+        box-shadow: 0 0 10px black;
+    }
+
+    .recipelist{
+        margin: 0;
+        width: 100%;
+        overflow: hidden;
+        height: fit-content;
+    }
+
+    .sloader{
+        display: none;
+    }
+
+    .rloader{
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 10;
+    }
+
+    #modal{
+        width: 100vw;
+        height: fit-content;
+        margin: 0;
+        padding: 0;
+        max-width: none;
+        border: none;
+    }
+    .modalwh{
+        width: 100vw;
+        height: fit-content;
+        margin: 0;
+        padding: 0;
+        position: relative;
+
+    }
+
+    .rsidebar{
+        width: 100%;
+        position: relative;
+        padding-top: 10vh;
+    }
+    .content-area{
+        width: 100%;
+        padding: 20px;
+        margin: 0;
+    }
+    .heading{
+        position: fixed;
+        top:0;
+        padding: 10px;
+        padding-right: 50px;
+        min-height: 10%;
+        height: auto;
+    }
+
+    ul{
+        padding: 0;
+        column-count:1;
+        max-width: 100%;
+    }
+
+    .parent{
+        top: 10px;
+    }
+
+    .rrloader{
+        position: fixed;
+        top:0%;
+        left: 0%;
+        height: 100vh;
+        width: 100vw;
+        z-index: 20;
+    }
+
+    .modalclose{
+        position: absolute;
+
+        z-index: 6 !important;
+        /* position: relative; */
+    }
+
+    .veg{
+        height: 20px;
+        width: 20px;
+    }
+
+
+}
